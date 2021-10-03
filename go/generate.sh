@@ -15,6 +15,8 @@ fi
 
 protoc --version
 
+for f in "$ROOT/proto/wechaty"/**/*.proto; do echo $f; done
+
 protoc \
   -I "$ROOT/proto" \
   -I "$ROOT/third-party" \
@@ -22,5 +24,5 @@ protoc \
   --go_opt=paths=source_relative \
   --go-grpc_out=$OUT_DIR \
   --go-grpc_opt=paths=source_relative \
-  "$ROOT/proto/wechaty"/** \
+  "$ROOT/proto/wechaty"/**/*.proto \
   "$ROOT/third-party"/**/*.proto
